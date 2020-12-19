@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'file:///F:/GithubProjects/supply/lib/page/index/index.dart';
+import 'package:supply/page/store/store.dart';
+
+import 'page/index/index.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +17,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         buttonTheme: ButtonThemeData(padding: EdgeInsets.zero),
       ),
-      home: Index(),
+      initialRoute: 'index',
+      routes: {
+        'index': (_) => Index(),
+        'store': (_) => Store(),
+      },
     );
   }
 }

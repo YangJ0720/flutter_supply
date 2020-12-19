@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'file:///F:/GithubProjects/supply/lib/page/index/home/index_home.dart';
-import 'file:///F:/GithubProjects/supply/lib/page/index/mine/index_mine.dart';
-import 'file:///F:/GithubProjects/supply/lib/page/index/order/index_order.dart';
+
+import 'home/index_home.dart';
+import 'mine/index_mine.dart';
+import 'order/index_order.dart';
 
 ///
 class Index extends StatefulWidget {

@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:supply/page/index/home/widget/index_home_search_view.dart';
 
-///
+/// 首页搜索
 class IndexHomeSliver extends SliverPersistentHeaderDelegate {
-  final double _extent = 50;
+  final Widget widget;
+  final double extent;
+
+  IndexHomeSliver(this.widget, {this.extent = 50});
 
   @override
   Widget build(context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      child: IndexHomeSearchView(),
+      child: widget,
       color: Colors.white,
-      height: _extent,
+      height: extent,
     );
   }
 
   @override
-  double get maxExtent => _extent;
+  double get maxExtent => extent;
 
   @override
-  double get minExtent => _extent;
+  double get minExtent => extent;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
