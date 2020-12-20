@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supply/page/store/sliver/store_search_sliver.dart';
+import 'package:supply/page/store/sliver/store_tab_sliver.dart';
 
 /// 商铺界面
 class Store extends StatefulWidget {
@@ -16,6 +17,7 @@ class _StoreState extends State<Store> {
       body: CustomScrollView(
         slivers: [
           SliverPersistentHeader(delegate: StoreSearchSliver(), pinned: true),
+          SliverPersistentHeader(delegate: StoreTabSliver(), pinned: true),
           SliverGrid(
             delegate: SliverChildBuilderDelegate((_, index) {
               return Card(

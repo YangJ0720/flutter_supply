@@ -22,14 +22,14 @@ class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
         crossAxisCount: 2,
       ),
       itemBuilder: (_, index) {
-        return Card(
-          child: GestureDetector(
+        return GestureDetector(
+          child: Card(
             child: Container(
               alignment: Alignment.center,
               child: Text('${widget.text} -> index = $index'),
             ),
-            onTap: () => Navigator.pushNamed(context, 'store'),
           ),
+          onTap: () => Navigator.pushNamed(context, 'store'),
         );
       },
       itemCount: 100,
