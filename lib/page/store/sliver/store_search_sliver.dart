@@ -6,7 +6,7 @@ import 'package:supply/page/store/widget/store_info_view.dart';
 /// 商铺搜索
 class StoreSearchSliver extends SliverPersistentHeaderDelegate {
   final double _minExtent = 50;
-  final double _maxExtent = 120;
+  final double _maxExtent = 130;
   final double _paddingTop = MediaQueryData.fromWindow(window).padding.top;
 
   @override
@@ -24,7 +24,7 @@ class StoreSearchSliver extends SliverPersistentHeaderDelegate {
                     onPressed: () {},
                     icon: Icon(Icons.add),
                     label: Text('关注'),
-                    color: Colors.red,
+                    color: Colors.grey[200],
                   ),
                 ),
               ],
@@ -43,7 +43,7 @@ class StoreSearchSliver extends SliverPersistentHeaderDelegate {
               children: [
                 // 返回键
                 IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                  icon: Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
                   onPressed: () => Navigator.pop(context),
                 ),
                 // 输入框
@@ -68,7 +68,7 @@ class StoreSearchSliver extends SliverPersistentHeaderDelegate {
                 ),
                 // 分类
                 IconButton(
-                  icon: Icon(Icons.list, color: Colors.white),
+                  icon: Icon(Icons.dehaze, color: Colors.white),
                   onPressed: () {},
                 ),
               ],

@@ -6,7 +6,11 @@ class IndexHomeSearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(icon: Icon(Icons.my_location), onPressed: () {}, splashColor: Colors.transparent,),
+        IconButton(
+          icon: Icon(Icons.my_location),
+          onPressed: () => Navigator.pushNamed(context, 'location'),
+          splashColor: Colors.transparent,
+        ),
         Expanded(
           child: Container(
             alignment: Alignment.center,
@@ -18,7 +22,7 @@ class IndexHomeSearchView extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 7.5),
           ),
         ),
-        IconButton(icon: Icon(Icons.message), onPressed: () {}),
+        IconButton(icon: Icon(Icons.sms_rounded), onPressed: () {}),
       ],
     );
   }

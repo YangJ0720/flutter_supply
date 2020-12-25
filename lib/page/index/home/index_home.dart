@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:supply/config/base_config.dart';
 import 'package:supply/guide/guide_order.dart';
@@ -67,39 +69,41 @@ class _IndexHomeState extends State<IndexHome>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    double paddingTop = MediaQueryData.fromWindow(window).padding.top;
     TabBar tabBar = _createTabBars();
     var extent = tabBar.preferredSize.height;
-    return SafeArea(
-      child: DefaultTabController(
-        child: NestedScrollView(
-          headerSliverBuilder: (_, innerBoxIsScrolled) {
-            return [
-              // 搜索组件
-              SliverPersistentHeader(
-                delegate: IndexHomeSliver(IndexHomeSearchView()),
-                pinned: true,
+    return DefaultTabController(
+      child: NestedScrollView(
+        headerSliverBuilder: (_, innerBoxIsScrolled) {
+          return [
+            // 搜索组件
+            SliverPersistentHeader(
+              delegate: IndexHomeSliver(
+                IndexHomeSearchView(),
+                paddingTop: paddingTop,
               ),
-              // banner轮播组件
-              SliverToBoxAdapter(child: BannerView(_banner)),
-              // 分类导航
-              SliverToBoxAdapter(child: IndexHomeNavView()),
-              // 悬浮选项卡
-              SliverPersistentHeader(
-                delegate: IndexHomeSliver(tabBar, extent: extent),
-                pinned: true,
-              ),
-            ];
-          },
-          body: TabBarView(
-            children: List.generate(
-              _tabHost.length,
-              (index) => IndexHomeTabBarView(text: _tabHost[index]),
+              pinned: true,
             ),
-            controller: _tabController,
+            // banner轮播组件
+            SliverToBoxAdapter(child: BannerView(_banner)),
+            // 分类导航
+            SliverToBoxAdapter(child: IndexHomeNavView()),
+            // 悬浮选项卡
+            SliverPersistentHeader(
+              delegate: IndexHomeSliver(tabBar, extent: extent),
+              pinned: true,
+            ),
+          ];
+        },
+        body: TabBarView(
+          children: List.generate(
+            _tabHost.length,
+            (index) => IndexHomeTabBarView(text: _tabHost[index]),
           ),
+          controller: _tabController,
         ),
-        length: 2,
       ),
+      length: 2,
     );
   }
 

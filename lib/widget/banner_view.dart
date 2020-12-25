@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:supply/tools/image_load_tools.dart';
 
 /// banner轮播组件
 class BannerView extends StatefulWidget {
@@ -35,12 +35,7 @@ class _BannerViewState extends State<BannerView> {
     return SizedBox(
       child: PageView.builder(
         controller: _controller,
-        itemBuilder: (_, index) {
-          return CachedNetworkImage(
-            imageUrl: widget.list[index],
-            fit: BoxFit.fill,
-          );
-        },
+        itemBuilder: (_, index) => ImageLoadTools.load(widget.list[index]),
         itemCount: widget.list.length,
       ),
       height: widget.height,

@@ -17,22 +17,26 @@ class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-      ),
-      itemBuilder: (_, index) {
-        return GestureDetector(
-          child: Card(
-            child: Container(
-              alignment: Alignment.center,
-              child: Text('${widget.text} -> index = $index'),
+    return MediaQuery.removePadding(
+      context: context,
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (_, index) {
+          return GestureDetector(
+            child: Card(
+              child: Container(
+                alignment: Alignment.center,
+                child: Text('${widget.text} -> index = $index'),
+              ),
             ),
-          ),
-          onTap: () => Navigator.pushNamed(context, 'store'),
-        );
-      },
-      itemCount: 100,
+            onTap: () => Navigator.pushNamed(context, 'store'),
+          );
+        },
+        itemCount: 100,
+      ),
+      removeTop: true,
     );
   }
 

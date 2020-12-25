@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supply/page/index/mine/sliver/index_mine_sliver.dart';
 
 /// 我的
 class IndexMine extends StatefulWidget {
@@ -13,12 +14,10 @@ class _IndexMineState extends State<IndexMine>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Center(
-      child: FlatButton(
-        onPressed: () {},
-        child: Text('Mine'),
-        splashColor: Colors.transparent,
-      ),
+    return CustomScrollView(
+      slivers: [
+        SliverPersistentHeader(delegate: IndexMineSliver(), pinned: true),
+      ],
     );
   }
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:supply/page/settings/settings.dart';
 import 'package:supply/page/store/store.dart';
 
 import 'page/index/index.dart';
+import 'page/location/location.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'index': (_) => Index(),
         'store': (_) => Store(),
+        'location': (_) => Location(),
+        'settings': (_) => Settings(),
       },
     );
   }
