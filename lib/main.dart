@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supply/bloc/home_list_bloc.dart';
 import 'package:supply/page/settings/settings.dart';
 import 'package:supply/page/store/store.dart';
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         buttonTheme: ButtonThemeData(padding: EdgeInsets.zero),
       ),
-      initialRoute: 'index',
+      home: BlocProvider(create: (_) => HomeListBloc(0), child: Index()),
       routes: {
         'index': (_) => Index(),
         'store': (_) => Store(),

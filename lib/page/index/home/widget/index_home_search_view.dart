@@ -14,7 +14,7 @@ class IndexHomeSearchView extends StatelessWidget {
         Expanded(
           child: Container(
             alignment: Alignment.center,
-            child: Text('汰渍洗衣液'),
+            child: Text('搜索商品名称/商铺名称'),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               color: Colors.grey[200],

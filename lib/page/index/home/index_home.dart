@@ -22,8 +22,6 @@ class IndexHome extends StatefulWidget {
 
 class _IndexHomeState extends State<IndexHome>
     with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-  final String _url = '${BaseConfig.host}raw/master/flutter_takeout/';
-
   // banner轮播组件
   List<String> _banner;
 
@@ -51,10 +49,14 @@ class _IndexHomeState extends State<IndexHome>
   void initState() {
     super.initState();
     _banner = List<String>();
-    _banner.add('${_url}images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
-    _banner.add('${_url}images/banner/AYV09JvHTIjtTxpRwk8jLy59V8s!MA.jpg');
-    _banner.add('${_url}images/banner/5mJ7NzI1J18yMWRocHGJ4pxpJzw!MA.jpg');
-    _banner.add('${_url}images/banner/vYrYdiA0zzgGTVwUtc_L_H-9_Tg!MA.jpg');
+    _banner.add(
+        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
+    _banner.add(
+        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
+    _banner.add(
+        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
+    _banner.add(
+        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
     // 初始化选项卡控制器
     _tabController = TabController(length: _tabHost.length, vsync: this);
   }
@@ -95,12 +97,16 @@ class _IndexHomeState extends State<IndexHome>
             ),
           ];
         },
-        body: TabBarView(
-          children: List.generate(
-            _tabHost.length,
-            (index) => IndexHomeTabBarView(text: _tabHost[index]),
+        body: MediaQuery.removePadding(
+          context: context,
+          child: TabBarView(
+            children: List.generate(
+              _tabHost.length,
+              (index) => IndexHomeTabBarView(text: _tabHost[index]),
+            ),
+            controller: _tabController,
           ),
-          controller: _tabController,
+          removeTop: true,
         ),
       ),
       length: 2,

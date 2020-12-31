@@ -73,6 +73,9 @@ class _IndexState extends State<Index> {
             selectedItemColor: Colors.blue,
             unselectedItemColor: Colors.grey,
             onTap: (index) => _controller.jumpToPage(index),
+            type: BottomNavigationBarType.fixed,
+            selectedFontSize: 14,
+            unselectedFontSize: 14,
           );
         },
         stream: _streamController.stream,
