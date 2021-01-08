@@ -23,7 +23,6 @@ class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
     super.build(context);
     return BlocBuilder<HomeListBloc, int>(
       builder: (_, value) {
-        print('value = $value');
         return GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -38,11 +37,28 @@ class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
                         '${BaseConfig.host}home/image/milk.webp',
                       ),
                     ),
-                    Text(
-                      '光明莫斯利安酸奶原味200g*12盒/24盒巴氏杀菌热处理风味酸牛奶',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
+                      child: Text(
+                        '光明莫斯利安酸奶原味200g*12盒/24盒巴氏杀菌热处理风味酸牛奶',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
+                    Row(
+                      children: [
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            '¥18.88',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                        Text('月销180', style: TextStyle(color: Colors.grey)),
+                        SizedBox(width: 10),
+                      ],
+                    ),
+                    SizedBox(height: 10),
                   ],
                   mainAxisSize: MainAxisSize.min,
                 ),

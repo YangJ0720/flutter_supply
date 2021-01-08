@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supply/bloc/home_list_bloc.dart';
 import 'package:supply/page/settings/settings.dart';
 import 'package:supply/page/store/store.dart';
+import 'package:supply/page/store/store_order.dart';
 
 import 'page/index/index.dart';
 import 'page/location/location.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         'store': (_) => Store(),
         'location': (_) => Location(),
         'settings': (_) => Settings(),
+        'store_order': (_) => StoreOrder(),
       },
     );
   }

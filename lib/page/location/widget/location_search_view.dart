@@ -30,7 +30,7 @@ class LocationSearchView extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Colors.grey[350],
+        color: Colors.grey[200],
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.symmetric(horizontal: 20),

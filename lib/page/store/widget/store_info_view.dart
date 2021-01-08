@@ -11,7 +11,12 @@ class StoreInfoView extends StatelessWidget {
     var style = TextStyle(fontSize: 12);
     return Column(
       children: [
-        Text(name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(
+          name,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          maxLines: 1,
+        ),
+        SizedBox(height: 2.5),
         Row(
           children: [
             Text('综合评分:', style: style),
@@ -22,6 +27,7 @@ class StoreInfoView extends StatelessWidget {
             Icon(Icons.star_border, size: 15),
           ],
         ),
+        SizedBox(height: 2.5),
         Text(
           '公告: 商家提供配送服务，商家提供配送服务，商家提供配送服务。重要的事情说三遍',
           style: style,

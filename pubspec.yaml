@@ -36,6 +36,8 @@ dependencies:
   flutter_bmflocation: ^1.0.3
   # 微信支付插件
   fluwx: ^2.5.0+1
+  # 阿里支付插件
+  flutter_alipay: ^1.0.0
 
 dev_dependencies:
   flutter_test:

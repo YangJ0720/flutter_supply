@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:supply/page/index/message/index_message.dart';
 
 import 'home/index_home.dart';
 import 'mine/index_mine.dart';
@@ -20,7 +18,6 @@ class _IndexState extends State<Index> {
   // 选项卡
   final List<Widget> _list = [
     IndexHome(),
-    IndexMessage(),
     IndexOrder(),
     IndexMine(),
   ];
@@ -65,7 +62,6 @@ class _IndexState extends State<Index> {
           return BottomNavigationBar(
             items: [
               _createNavBarItem(Icons.home, '首页'),
-              _createNavBarItem(Icons.message, '消息'),
               _createNavBarItem(Icons.assignment, '订单'),
               _createNavBarItem(Icons.person, '我的'),
             ],

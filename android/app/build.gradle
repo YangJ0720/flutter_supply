@@ -41,10 +41,41 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            // 是否开启代码混淆
+            minifyEnabled false
+            // 是否移除无用资源
+            zipAlignEnabled false
+            //
+            shrinkResources false
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+        }
+        release {
+            // 是否开启代码混淆
+            minifyEnabled false
+            // 是否移除无用资源
+            zipAlignEnabled false
+            //
+            shrinkResources false
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('../keystore/keystore.jks')
+            storePassword 'YangJ8119822='
+            keyAlias 'supply'
+            keyPassword 'YangJ430599='
+        }
+        release {
+            storeFile file('../keystore/keystore.jks')
+            storePassword 'YangJ8119822='
+            keyAlias 'supply'
+            keyPassword 'YangJ430599='
         }
     }
 }

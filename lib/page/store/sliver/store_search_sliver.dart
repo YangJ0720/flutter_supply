@@ -18,7 +18,7 @@ class StoreSearchSliver extends SliverPersistentHeaderDelegate {
           child: Container(
             child: Row(
               children: [
-                Expanded(child: StoreInfoView('家乐福便利店')),
+                Expanded(child: StoreInfoView('美宜佳（科兴科学园店SZ025）')),
                 Container(
                   child: FlatButton.icon(
                     onPressed: () {},
@@ -54,7 +54,7 @@ class StoreSearchSliver extends SliverPersistentHeaderDelegate {
                         Icon(Icons.search, color: Colors.white),
                         SizedBox(width: 5),
                         Text(
-                          '搜索商品',
+                          '搜索店铺商品',
                           style: TextStyle(color: Colors.white),
                         ),
                       ],
