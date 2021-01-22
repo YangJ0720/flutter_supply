@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supply/bloc/home_list_bloc.dart';
 import 'package:supply/config/base_config.dart';
+import 'package:supply/page/index/home/model/home_list_model.dart';
 import 'package:supply/tools/image_load_tools.dart';
+import 'package:supply/tools/network_load_tools.dart';
 
 /// 首页 -> 选项卡
 class IndexHomeTabBarView extends StatefulWidget {
@@ -18,29 +22,57 @@ class IndexHomeTabBarView extends StatefulWidget {
 
 class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
     with AutomaticKeepAliveClientMixin {
+  StreamController<List<Datum>> _controller;
+
+  ///
+  Future<void> _loadData() async {
+    var url = '${BaseConfig.host}home/home_list.json';
+    String response = await NetworkLoadTools.load(url);
+    if (response != null && response.isNotEmpty) {
+      var model = HomeListModel.fromRawJson(response);
+      if (model.code == BaseConfig.CODE_200) {
+        _controller.sink.add(model.data);
+        return;
+      }
+    }
+    _controller.sink.addError('error');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = StreamController();
+    _loadData();
+  }
+
+  @override
+  void dispose() {
+    _controller.close();
+    _controller = null;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocBuilder<HomeListBloc, int>(
-      builder: (_, value) {
+    return StreamBuilder<List<Datum>>(
+      builder: (_, snapshot) {
+        var data = snapshot.data;
         return GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
           ),
           itemBuilder: (_, index) {
+            var item = data[index];
             return GestureDetector(
               child: Card(
                 child: Column(
                   children: [
-                    Expanded(
-                      child: ImageLoadTools.load(
-                        '${BaseConfig.host}home/image/milk.webp',
-                      ),
-                    ),
+                    Expanded(child: ImageLoadTools.load(item.image)),
                     Padding(
                       padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
                       child: Text(
-                        '光明莫斯利安酸奶原味200g*12盒/24盒巴氏杀菌热处理风味酸牛奶',
+                        item.name,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -66,9 +98,11 @@ class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
               onTap: () => Navigator.pushNamed(context, 'store'),
             );
           },
-          itemCount: 100,
+          itemCount: data.length,
         );
       },
+      stream: _controller.stream,
+      initialData: [],
     );
   }
 

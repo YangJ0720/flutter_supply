@@ -4,12 +4,14 @@ import 'package:supply/config/view_config.dart';
 /// 首页搜索
 class IndexHomeSliver extends SliverPersistentHeaderDelegate {
   final Widget widget;
-  final double extent;
+  final double maxExtentSize;
+  final double minExtentSize;
   final double paddingTop;
 
   IndexHomeSliver(
     this.widget, {
-    this.extent = ViewConfig.APP_BAR_SIZE,
+    this.maxExtentSize = ViewConfig.APP_BAR_SIZE,
+    this.minExtentSize = ViewConfig.APP_BAR_SIZE,
     this.paddingTop = 0,
   });
 
@@ -24,10 +26,10 @@ class IndexHomeSliver extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => extent + paddingTop;
+  double get maxExtent => maxExtentSize + paddingTop;
 
   @override
-  double get minExtent => extent + paddingTop;
+  double get minExtent => minExtentSize + paddingTop;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

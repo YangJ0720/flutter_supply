@@ -1,14 +1,15 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:supply/config/base_config.dart';
-import 'package:supply/guide/guide_order.dart';
+import 'package:supply/config/view_config.dart';
+import 'package:supply/page/index/home/model/home_model.dart';
 import 'package:supply/page/index/home/widget/index_home_nav_view.dart';
 import 'package:supply/page/index/home/widget/index_home_tabbar_view.dart';
-import 'package:supply/page/store/store.dart';
+import 'package:supply/tools/network_load_tools.dart';
 import 'package:supply/widget/banner_view.dart';
 
-import 'sliver/index_home_sliver.dart';
 import 'sliver/index_home_sliver.dart';
 import 'widget/index_home_search_view.dart';
 
@@ -22,16 +23,27 @@ class IndexHome extends StatefulWidget {
 
 class _IndexHomeState extends State<IndexHome>
     with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-  // banner轮播组件
-  List<String> _banner;
-
   // 悬浮选项卡
   final List<String> _tabHost = ['附近', '热销'];
 
   // 选项卡控制器
   TabController _tabController;
 
-  // 创建选项卡
+  //
+  var _futureBuilder;
+
+  ///
+  Future<HomeModel> _loadData() async {
+    var url = '${BaseConfig.host}home/home.json';
+    String response = await NetworkLoadTools.load(url);
+    if (response != null && response.isNotEmpty) {
+      var m = HomeModel.fromRawJson(response);
+      return m;
+    }
+    return null;
+  }
+
+  /// 创建选项卡
   Widget _createTabBars() {
     var tabs = List<Widget>.generate(_tabHost.length, (index) {
       return Tab(text: _tabHost[index]);
@@ -48,15 +60,7 @@ class _IndexHomeState extends State<IndexHome>
   @override
   void initState() {
     super.initState();
-    _banner = List<String>();
-    _banner.add(
-        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
-    _banner.add(
-        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
-    _banner.add(
-        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
-    _banner.add(
-        'https://gitee.com/YangJ0720/flutter_takeout/raw/master/flutter_takeout/images/banner/9JBHlnd_VeeOmCACOva2qIFFhrU!MA.jpg');
+    _futureBuilder = _loadData();
     // 初始化选项卡控制器
     _tabController = TabController(length: _tabHost.length, vsync: this);
   }
@@ -74,42 +78,59 @@ class _IndexHomeState extends State<IndexHome>
     double paddingTop = MediaQueryData.fromWindow(window).padding.top;
     TabBar tabBar = _createTabBars();
     var extent = tabBar.preferredSize.height;
-    return DefaultTabController(
-      child: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrolled) {
-          return [
-            // 搜索组件
-            SliverPersistentHeader(
-              delegate: IndexHomeSliver(
-                IndexHomeSearchView(),
-                paddingTop: paddingTop,
+    return FutureBuilder<HomeModel>(
+      builder: (_, snapshot) {
+        if (snapshot.hasData) {
+          var model = snapshot.data;
+          return DefaultTabController(
+            child: NestedScrollView(
+              headerSliverBuilder: (_, innerBoxIsScrolled) {
+                return [
+                  // 搜索组件
+                  SliverPersistentHeader(
+                    delegate: IndexHomeSliver(
+                      IndexHomeSearchView(),
+                      maxExtentSize: ViewConfig.APP_BAR_SIZE * 2,
+                      paddingTop: paddingTop,
+                    ),
+                    pinned: true,
+                  ),
+                  // banner轮播组件
+                  SliverToBoxAdapter(child: BannerView(model.data.banners)),
+                  // 分类导航
+                  SliverToBoxAdapter(child: IndexHomeNavView()),
+                  // 悬浮选项卡
+                  SliverPersistentHeader(
+                    delegate: IndexHomeSliver(
+                      tabBar,
+                      maxExtentSize: extent,
+                      minExtentSize: extent,
+                    ),
+                    pinned: true,
+                  ),
+                ];
+              },
+              body: MediaQuery.removePadding(
+                context: context,
+                child: TabBarView(
+                  children: List.generate(
+                    _tabHost.length,
+                    (index) => IndexHomeTabBarView(text: _tabHost[index]),
+                  ),
+                  controller: _tabController,
+                ),
+                removeTop: true,
               ),
-              pinned: true,
             ),
-            // banner轮播组件
-            SliverToBoxAdapter(child: BannerView(_banner)),
-            // 分类导航
-            SliverToBoxAdapter(child: IndexHomeNavView()),
-            // 悬浮选项卡
-            SliverPersistentHeader(
-              delegate: IndexHomeSliver(tabBar, extent: extent),
-              pinned: true,
-            ),
-          ];
-        },
-        body: MediaQuery.removePadding(
-          context: context,
-          child: TabBarView(
-            children: List.generate(
-              _tabHost.length,
-              (index) => IndexHomeTabBarView(text: _tabHost[index]),
-            ),
-            controller: _tabController,
-          ),
-          removeTop: true,
-        ),
-      ),
-      length: 2,
+            length: 2,
+          );
+        }
+        return Container(
+          alignment: Alignment.center,
+          child: Text('正在加载数据'),
+        );
+      },
+      future: _futureBuilder,
     );
   }
 

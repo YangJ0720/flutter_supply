@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:supply/config/base_config.dart';
 
 ///
 class NetworkLoadTools {
   ///
-  Future<String> load(String url) async {
+  static Future<String> load(String url) async {
     Response response = await Dio().get(url);
-    return response.data;
+    if (response.statusCode == BaseConfig.CODE_200) {
+      return response.data;
+    }
+    return null;
   }
 }

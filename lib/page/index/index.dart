@@ -1,12 +1,16 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bmflocation/bdmap_location_flutter_plugin.dart';
+import 'package:supply/page/index/category/index_category.dart';
+import 'package:supply/tools/location_tools.dart';
 
 import 'home/index_home.dart';
 import 'mine/index_mine.dart';
-import 'order/index_order.dart';
+import 'shopping/index_shopping.dart';
 
-///
+/// 应用程序主界面
 class Index extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -18,7 +22,8 @@ class _IndexState extends State<Index> {
   // 选项卡
   final List<Widget> _list = [
     IndexHome(),
-    IndexOrder(),
+    IndexCategory(),
+    IndexShopping(),
     IndexMine(),
   ];
 
@@ -35,10 +40,22 @@ class _IndexState extends State<Index> {
     super.initState();
     _controller = PageController();
     _streamController = StreamController();
+    // 初始化百度定位SDK
+    LocationTools().initialize();
+    // 设置iOS端百度定位AK
+    if (Platform.isIOS) {
+      LocationFlutterPlugin.setApiKey('key');
+    }
+    // 申请定位权限
+    LocationFlutterPlugin().requestPermission();
+    // 开始定位
+    // LocationTools().start();
   }
 
   @override
   void dispose() {
+    // 结束定位
+    // LocationTools().stop();
     _streamController.close();
     _streamController = null;
     _controller.dispose();
@@ -62,7 +79,8 @@ class _IndexState extends State<Index> {
           return BottomNavigationBar(
             items: [
               _createNavBarItem(Icons.home, '首页'),
-              _createNavBarItem(Icons.assignment, '订单'),
+              _createNavBarItem(Icons.category, '分类'),
+              _createNavBarItem(Icons.shopping_cart, '购物车'),
               _createNavBarItem(Icons.person, '我的'),
             ],
             currentIndex: currentIndex,

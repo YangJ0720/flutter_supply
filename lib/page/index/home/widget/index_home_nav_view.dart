@@ -30,6 +30,7 @@ class IndexHomeNavView extends StatelessWidget {
         },
         itemCount: _list.length,
         padding: EdgeInsets.all(10),
+        physics: NeverScrollableScrollPhysics(),
       ),
       height: 175,
     );

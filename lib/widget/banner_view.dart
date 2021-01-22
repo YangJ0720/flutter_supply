@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:supply/page/index/home/model/home_model.dart';
 import 'package:supply/tools/image_load_tools.dart';
 
 /// banner轮播组件
 class BannerView extends StatefulWidget {
-  final List<String> list;
+  final List<Banners> list;
   final double height;
 
   const BannerView(this.list, {this.height = 120});
@@ -35,7 +36,10 @@ class _BannerViewState extends State<BannerView> {
     return SizedBox(
       child: PageView.builder(
         controller: _controller,
-        itemBuilder: (_, index) => ImageLoadTools.load(widget.list[index]),
+        itemBuilder: (_, index) {
+          var item = widget.list[index];
+          return ImageLoadTools.load(item.image);
+        },
         itemCount: widget.list.length,
       ),
       height: widget.height,

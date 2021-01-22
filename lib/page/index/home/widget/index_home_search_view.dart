@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'index_home_address_view.dart';
+
 /// 搜索框
 class IndexHomeSearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        IconButton(
-          icon: Icon(Icons.my_location),
-          onPressed: () => Navigator.pushNamed(context, 'location'),
-          splashColor: Colors.transparent,
+        Row(
+          children: [
+            Expanded(child: IndexHomeAddressView()),
+            IconButton(icon: Icon(Icons.sms_rounded), onPressed: () {}),
+          ],
         ),
         Expanded(
           child: Container(
@@ -19,10 +22,9 @@ class IndexHomeSearchView extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               color: Colors.grey[200],
             ),
-            margin: EdgeInsets.symmetric(vertical: 7.5),
+            margin: EdgeInsets.fromLTRB(7.5, 10, 7.5, 10),
           ),
         ),
-        IconButton(icon: Icon(Icons.sms_rounded), onPressed: () {}),
       ],
     );
   }

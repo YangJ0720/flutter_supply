@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 /// 订单 -> 收件码组件
-class IndexOrderTakeCodeView extends StatelessWidget {
+class OrderTakeCodeView extends StatelessWidget {
   /// 生成4位随机数
   String _createRandom(int length) {
     var sb = StringBuffer();
