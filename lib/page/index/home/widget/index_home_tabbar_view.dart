@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supply/bloc/home_list_bloc.dart';
 import 'package:supply/config/base_config.dart';
 import 'package:supply/page/index/home/model/home_list_model.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 import 'package:supply/tools/image_load_tools.dart';
 import 'package:supply/tools/network_load_tools.dart';
 
@@ -95,7 +95,7 @@ class _IndexHomeTabBarViewState extends State<IndexHomeTabBarView>
                   mainAxisSize: MainAxisSize.min,
                 ),
               ),
-              onTap: () => Navigator.pushNamed(context, 'store'),
+              onTap: () => pushNamed(context, RoutePaths.STORE_PAGE),
             );
           },
           itemCount: data.length,

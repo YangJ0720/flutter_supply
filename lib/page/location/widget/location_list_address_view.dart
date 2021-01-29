@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:supply/page/location/model/location_model.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 
 ///
 class LocationListAddressView extends StatefulWidget {
@@ -42,9 +44,7 @@ class _LocationListAddressViewState extends State<LocationListAddressView> {
             ),
             InkWell(
               child: Icon(Icons.edit),
-              onTap: () {
-                Navigator.pushNamed(context, 'location_edit', arguments: model);
-              },
+              onTap: () => pushNamed(context, RoutePaths.LOCATION_EDIT_PAGE),
             ),
           ],
         ),

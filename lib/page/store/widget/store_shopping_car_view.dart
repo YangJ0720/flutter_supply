@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_alipay/flutter_alipay.dart';
 import 'package:fluwx/fluwx.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 
 /// 商铺 -> 购物车
 class StoreShoppingCarView extends StatefulWidget {
@@ -33,7 +35,7 @@ class _StoreShoppingCarViewState extends State<StoreShoppingCarView> {
           ),
           // 结算
           FlatButton(
-            onPressed: () => Navigator.pushNamed(context, 'store_order'),
+            onPressed: () => pushNamed(context, RoutePaths.STORE_ORDER_PAGE),
             child: Container(
               child: Text('提交订单', style: TextStyle(color: Colors.white)),
             ),

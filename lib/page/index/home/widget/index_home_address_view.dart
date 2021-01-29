@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 import 'package:supply/tools/location_tools.dart';
 
 /// 首页 -> 收货地址
@@ -60,7 +62,7 @@ class _IndexHomeAddressViewState extends State<IndexHomeAddressView> {
         ],
       ),
       onTap: () async {
-        var result = await Navigator.pushNamed(context, 'location');
+        var result = await pushNamed(context, RoutePaths.LOCATION_PAGE);
         print('result = $result');
         // if (result != null && result.isNotEmpty) {
         //   _controller.sink.add(result);

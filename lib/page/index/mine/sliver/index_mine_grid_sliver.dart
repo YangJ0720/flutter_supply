@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 
 ///
 class IndexMineGridSliver extends StatelessWidget {
@@ -34,7 +36,7 @@ class IndexMineGridSliver extends StatelessWidget {
             color: Colors.white,
             margin: EdgeInsets.all(5),
           ),
-          onTap: () => Navigator.pushNamed(context, 'order'),
+          onTap: () => pushNamed(context, RoutePaths.ORDER_PAGE),
         );
       }, childCount: _list.length),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

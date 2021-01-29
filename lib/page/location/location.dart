@@ -8,6 +8,8 @@ import 'package:flutter_bmflocation/flutter_baidu_location_android_option.dart';
 import 'package:flutter_bmflocation/flutter_baidu_location_ios_option.dart';
 import 'package:supply/page/location/widget/location_list_address_view.dart';
 import 'package:supply/page/location/widget/location_search_view.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 import 'package:supply/tools/location_tools.dart';
 import 'package:supply/widget/bar/base_app_bar.dart';
 import 'package:supply/widget/bar/custom_app_bar.dart';
@@ -65,7 +67,9 @@ class _LocationState extends State<Location> {
                       '新增地址',
                       style: TextStyle(color: Colors.blue),
                     ),
-                    onTap: () => Navigator.pushNamed(context, 'location_edit'),
+                    onTap: () {
+                      return pushNamed(context, RoutePaths.LOCATION_EDIT_PAGE);
+                    },
                   ),
                 ],
               ),

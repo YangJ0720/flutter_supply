@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supply/bloc/home_list_bloc.dart';
-import 'package:supply/page/location/location_edit.dart';
-import 'package:supply/page/order/order.dart';
-import 'package:supply/page/settings/settings.dart';
-import 'package:supply/page/store/store.dart';
-import 'package:supply/page/store/store_order.dart';
-
-import 'page/index/index.dart';
-import 'page/location/location.dart';
+import 'package:supply/route/route_paths.dart';
+import 'package:supply/route/route_registered.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,16 +16,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         buttonTheme: ButtonThemeData(padding: EdgeInsets.zero),
       ),
-      home: BlocProvider(create: (_) => HomeListBloc(0), child: Index()),
-      routes: {
-        'index': (_) => Index(),
-        'store': (_) => Store(),
-        'location': (_) => Location(),
-        'location_edit': (_) => LocationEdit(),
-        'order': (_) => Order(),
-        'settings': (_) => Settings(),
-        'store_order': (_) => StoreOrder(),
-      },
+      initialRoute: RoutePaths.INDEX_PAGE,
+      routes: routes,
     );
   }
 }

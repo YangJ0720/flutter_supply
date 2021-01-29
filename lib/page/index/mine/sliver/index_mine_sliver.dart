@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:supply/config/view_config.dart';
+import 'package:supply/route/route_navigator.dart';
+import 'package:supply/route/route_paths.dart';
 
 ///
 class IndexMineSliver extends SliverPersistentHeaderDelegate {
@@ -18,7 +20,7 @@ class IndexMineSliver extends SliverPersistentHeaderDelegate {
             alignment: Alignment.centerRight,
             child: IconButton(
               icon: Icon(Icons.settings, color: Colors.white),
-              onPressed: () => Navigator.pushNamed(context, 'settings'),
+              onPressed: () => pushNamed(context, RoutePaths.SETTINGS_PAGE),
             ),
           ),
           // 用户信息
