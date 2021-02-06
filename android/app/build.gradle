@@ -64,20 +64,20 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    signingConfigs {
-        debug {
-            storeFile file('../keystore/keystore.jks')
-            storePassword 'YangJ8119822='
-            keyAlias 'supply'
-            keyPassword 'YangJ430599='
-        }
-        release {
-            storeFile file('../keystore/keystore.jks')
-            storePassword 'YangJ8119822='
-            keyAlias 'supply'
-            keyPassword 'YangJ430599='
-        }
-    }
+//    signingConfigs {
+//        debug {
+//            storeFile file('../keystore/keystore.jks')
+//            storePassword 'YangJ8119822='
+//            keyAlias 'supply'
+//            keyPassword 'YangJ430599='
+//        }
+//        release {
+//            storeFile file('../keystore/keystore.jks')
+//            storePassword 'YangJ8119822='
+//            keyAlias 'supply'
+//            keyPassword 'YangJ430599='
+//        }
+//    }
 }
 
 flutter {

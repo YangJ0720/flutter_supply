@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:supply/page/about/about_page.dart';
-import 'package:supply/page/index/index.dart';
-import 'package:supply/page/location/location.dart';
-import 'package:supply/page/location/location_edit.dart';
-import 'package:supply/page/settings/settings.dart';
-import 'package:supply/page/store/store.dart';
+import 'package:supply/page/index/index_page.dart';
+import 'package:supply/page/location/location_page.dart';
+import 'package:supply/page/location/location_edit_page.dart';
+import 'package:supply/page/settings/settings_page.dart';
+import 'package:supply/page/store/store_page.dart';
 
 import 'route_paths.dart';
 
 /// 路由表配置信息
 final routes = {
-  RoutePaths.INDEX_PAGE: (_, {arguments}) => Index(), // 应用程序主界面
-  RoutePaths.STORE_PAGE: (_, {arguments}) => Store(),
-  RoutePaths.LOCATION_PAGE: (_, {arguments}) => Location(),
-  RoutePaths.LOCATION_EDIT_PAGE: (_, {arguments}) => LocationEdit(),
-  RoutePaths.SETTINGS_PAGE: (_, {arguments}) => Settings(), // 设置界面
+  RoutePaths.INDEX_PAGE: (_, {arguments}) => IndexPage(), // 应用程序主界面
+  RoutePaths.STORE_PAGE: (_, {arguments}) => StorePage(),
+  RoutePaths.LOCATION_PAGE: (_, {arguments}) => LocationPage(),
+  RoutePaths.LOCATION_EDIT_PAGE: (_, {arguments}) => LocationEditPage(),
+  RoutePaths.SETTINGS_PAGE: (_, {arguments}) => SettingsPage(), // 设置界面
   RoutePaths.ABOUT_PAGE: (_, {arguments}) => AboutPage(), // 关于我们
 };
 

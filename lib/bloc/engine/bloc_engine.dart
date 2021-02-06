@@ -9,12 +9,14 @@ abstract class BlocBase {
 class BlocEngine<T extends BlocBase> extends StatefulWidget {
   final Widget Function(BuildContext context, T model) builder;
   final T bloc;
+  final Function(T) initialize;
   final bool userDispose;
 
   BlocEngine({
     Key key,
     @required this.builder,
     @required this.bloc,
+    this.initialize,
     this.userDispose: true,
   }) : super(key: key);
 
@@ -22,8 +24,15 @@ class BlocEngine<T extends BlocBase> extends StatefulWidget {
   _BlocEngineState<T> createState() => _BlocEngineState<T>();
 }
 
-class _BlocEngineState<T extends BlocBase>
-    extends State<BlocEngine<BlocBase>> {
+class _BlocEngineState<T extends BlocBase> extends State<BlocEngine<T>> {
+
+  @override
+  void initState() {
+    super.initState();
+    var bloc = widget.bloc;
+    if (bloc != null) widget.initialize(bloc);
+  }
+
   @override
   void dispose() {
     if (widget.userDispose) widget.bloc.dispose();

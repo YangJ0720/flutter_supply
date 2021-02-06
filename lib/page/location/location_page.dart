@@ -18,14 +18,14 @@ import 'package:supply/widget/bar/simple_app_bar.dart';
 import 'widget/location_current_address_view.dart';
 
 /// 定位
-class Location extends StatefulWidget {
+class LocationPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _LocationState();
+    return _LocationPageState();
   }
 }
 
-class _LocationState extends State<Location> {
+class _LocationPageState extends State<LocationPage> {
   @override
   void initState() {
     super.initState();

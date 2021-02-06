@@ -3,14 +3,14 @@ import 'package:supply/widget/bar/base_app_bar.dart';
 import 'package:supply/widget/bar/simple_app_bar.dart';
 
 ///
-class Settings extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _SettingsState();
+    return _SettingsPageState();
   }
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

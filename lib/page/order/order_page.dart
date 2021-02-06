@@ -12,14 +12,14 @@ import 'package:supply/widget/bar/simple_app_bar.dart';
 import 'widget/order_take_code_view.dart';
 
 /// 订单
-class Order extends StatefulWidget {
+class OrderPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _OrderState();
+    return _OrderPageState();
   }
 }
 
-class _OrderState extends State<Order> with TickerProviderStateMixin {
+class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
   final List<String> _tabs = ['全部', '待付款', '待收货', '待评价'];
   TabController _controller;
 

@@ -7,7 +7,7 @@ import 'package:supply/widget/bar/base_app_bar.dart';
 import 'package:supply/widget/bar/simple_app_bar.dart';
 
 /// 购物车 -> 提交订单
-class StoreOrder extends StatelessWidget {
+class StoreOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

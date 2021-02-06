@@ -7,14 +7,14 @@ import 'package:supply/page/store/tab/store_tab_view_evaluation.dart';
 import 'tab/store_tab_view_goods.dart';
 
 /// 商铺界面
-class Store extends StatefulWidget {
+class StorePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _StoreState();
+    return _StorePageState();
   }
 }
 
-class _StoreState extends State<Store> with TickerProviderStateMixin {
+class _StorePageState extends State<StorePage> with TickerProviderStateMixin {
   final List<String> _list = ['商品', '评价', '商家'];
   TabController _controller;
 

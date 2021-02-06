@@ -11,14 +11,14 @@ import 'mine/index_mine.dart';
 import 'shopping/index_shopping.dart';
 
 /// 应用程序主界面
-class Index extends StatefulWidget {
+class IndexPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _IndexState();
+    return _IndexPageState();
   }
 }
 
-class _IndexState extends State<Index> {
+class _IndexPageState extends State<IndexPage> {
   // 选项卡
   final List<Widget> _list = [
     IndexHome(),

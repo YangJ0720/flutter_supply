@@ -4,7 +4,7 @@ import 'package:supply/widget/bar/base_app_bar.dart';
 import 'package:supply/widget/bar/simple_app_bar.dart';
 
 ///
-class LocationEdit extends StatelessWidget {
+class LocationEditPage extends StatelessWidget {
   ///
   LocationModel _getArguments(BuildContext context) {
     var model = ModalRoute.of(context).settings.arguments;
